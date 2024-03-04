@@ -3109,6 +3109,9 @@ trait Symbols extends api.Symbols { self: SymbolTable =>
     private def setTyconCache(tycon: Type) {
       tyconCache = tycon
       tyconRunId = currentRunId
+      if (System.getProperty("reflection.debug") == "true" && this._rawname.toString() == System.getProperty("reflection.debug.type")) {
+        Thread.sleep(300)
+      }
       assert(tyconCache ne null, this)
     }
 
